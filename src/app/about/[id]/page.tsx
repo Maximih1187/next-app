@@ -1,4 +1,3 @@
-import Button from "@/components/Button/Button";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -24,7 +23,7 @@ const getData = async ({ params: { id } }: Props) => {
     );
     return response.json();
   } catch (error) {
-    console.log("object");
+    console.log(error);
   }
 };
 

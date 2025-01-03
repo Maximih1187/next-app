@@ -14,7 +14,7 @@ const getData = async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     return response.json();
   } catch (error) {
-    console.log("object");
+    console.log(error);
   }
 };
 
