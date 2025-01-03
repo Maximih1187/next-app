@@ -14,7 +14,7 @@ export async function generateMetadata(id: string): Promise<Metadata> {
   };
 }
 
-const getData = async ({ params: { id } }: Props) => {
+const getData = async (id: string) => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${id}`
   );
@@ -22,13 +22,13 @@ const getData = async ({ params: { id } }: Props) => {
 };
 
 export default async function Post({ params: { id } }: Props) {
-  const response = await getData({ params: { id } });
+  const post = await getData(id);
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.id}>{response.id}</div>
-        <div className={styles.title}>{response.title}</div>
+        <div className={styles.id}>{post.id}</div>
+        <div className={styles.title}>{post.title}</div>
       </div>
       <Link className={styles.button} href="/about">
         {/* <button className={styles.button}> */}
