@@ -2,12 +2,12 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 
-// export interface IPoste {
-//   userId: string;
-//   id: string;
-//   title: string;
-//   body: string;
-// }
+export interface IPoste {
+  userId: string;
+  id: string;
+  title: string;
+  body: string;
+}
 
 const getData = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -31,7 +31,7 @@ export default async function About() {
       <div className={styles.box}>About</div>
       <ol className={styles.ul}>
         {data ? (
-          data.map((post: any) => {
+          data.map((post: IPoste) => {
             return (
               <li key={post.id} className={styles.li}>
                 <Link href={`/about/${post.id}`}>{post.title}</Link>
