@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-// import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 type Props = {
@@ -8,21 +8,19 @@ type Props = {
   };
 };
 
-// export async function generateMetadata({ params: { id } }: Props) {
-//   return {
-//     title: id,
-//   };
-// }
+export async function generateMetadata({
+  params: { id },
+}: Props): Promise<Metadata> {
+  return {
+    title: id,
+  };
+}
 
-const getData = async ({ params: { id } }: Props) => {
-  try {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts/${id}`
-    );
-    return response.json();
-  } catch (error) {
-    console.log(error);
-  }
+const getData = async ({ params: { id } }: Props): Promise<any> => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`
+  );
+  return response.json();
 };
 
 export default async function id({ params: { id } }: Props) {
