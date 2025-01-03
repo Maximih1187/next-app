@@ -2,11 +2,11 @@ import styles from "./styles.module.css";
 // import type { Metadata } from "next";
 import Link from "next/link";
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
+// type Props = {
+//   params: {
+//     id: string;
+//   };
+// };
 
 // export async function generateMetadata({ params: { id } }: Props) {
 //   return {
@@ -21,7 +21,7 @@ const getData = async (id: string) => {
   return response.json();
 };
 
-export default async function id({ params: { id } }: Props) {
+export default async function id(id: string) {
   const response = await getData(id);
 
   return (
