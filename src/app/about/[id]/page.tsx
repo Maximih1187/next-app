@@ -18,10 +18,14 @@ export async function generateMetadata({
 }
 
 const getData = async ({ params: { id } }: Props) => {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${id}`
-  );
-  return response.json();
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${id}`
+    );
+    return response.json();
+  } catch (error) {
+    console.log("object");
+  }
 };
 
 export default async function Tel({ params: { id } }: Props) {
@@ -33,8 +37,10 @@ export default async function Tel({ params: { id } }: Props) {
         <div className={styles.id}>{response.id}</div>
         <div className={styles.title}>{response.title}</div>
       </div>
-      <Link href="/about">
-        <button className={styles.button}>Назад</button>
+      <Link className={styles.button} href="/about">
+        {/* <button className={styles.button}> */}
+        Назад
+        {/* </button> */}
       </Link>
     </div>
   );

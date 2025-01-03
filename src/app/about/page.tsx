@@ -10,8 +10,12 @@ interface IPoste {
 }
 
 const getData = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-  return response.json();
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    return response.json();
+  } catch (error) {
+    console.log("object");
+  }
 };
 
 export const metadata: Metadata = {
@@ -26,13 +30,17 @@ export default async function About() {
     <div className={styles.container}>
       <div className={styles.box}>About</div>
       <ol className={styles.ul}>
-        {data.map((post: IPoste) => {
-          return (
-            <Link href={`/about/${post.id}`} key={post.id}>
-              <li className={styles.li}>{post.title}</li>
-            </Link>
-          );
-        })}
+        {data ? (
+          data.map((post: IPoste) => {
+            return (
+              <Link href={`/about/${post.id}`} key={post.id}>
+                <li className={styles.li}>{post.title}</li>
+              </Link>
+            );
+          })
+        ) : (
+          <div>loading...</div>
+        )}
       </ol>
     </div>
   );
