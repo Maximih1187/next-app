@@ -1,9 +1,10 @@
+import Link from "next/link";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 
 interface IPoste {
-  userId: number;
-  id: number;
+  userId: string;
+  id: string;
   title: string;
   body: string;
 }
@@ -27,9 +28,9 @@ export default async function About() {
       <ol className={styles.ul}>
         {data.map((post: IPoste) => {
           return (
-            <li className={styles.li} key={post.id}>
-              {post.title}
-            </li>
+            <Link href={`/about/${post.id}`} key={post.id}>
+              <li className={styles.li}>{post.title}</li>
+            </Link>
           );
         })}
       </ol>

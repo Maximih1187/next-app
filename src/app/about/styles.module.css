@@ -4,18 +4,24 @@
   background: #5e5e5e47;
   margin: 0 auto;
   display: flex;
-
   justify-content: center;
 }
 .box {
   font-size: 25px;
   height: 100vh;
   padding: 20px;
+  margin: 50px;
+  cursor: default;
 }
 .ul {
   width: 500px;
   margin-top: 30px;
+  list-style: circle;
+  list-style-type: circle;
 }
 .li {
   height: 40px;
+}
+.li:hover {
+  background: #e1a5a5;
 }
