@@ -7,19 +7,21 @@ interface Props {
     id: string;
   };
 }
-
-export async function generateMetadata(id: string): Promise<Metadata> {
-  return {
-    title: `About ${id}`,
-  };
-}
-
 const getData = async (id: string) => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${id}`
   );
   return response.json();
 };
+
+export async function generateMetadata({
+  params: { id },
+}: Props): Promise<Metadata> {
+  const post = await getData(id);
+  return {
+    title: `About ${post.title}`,
+  };
+}
 
 export default async function Post({ params: { id } }: Props) {
   const post = await getData(id);
