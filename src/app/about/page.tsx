@@ -1,6 +1,13 @@
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 
+interface IPoste {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
 const getData = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
   return response.json();
@@ -18,7 +25,7 @@ export default async function About() {
     <div className={styles.container}>
       <div className={styles.box}>About</div>
       <ol className={styles.ul}>
-        {data.map((post: any) => {
+        {data.map((post: IPoste) => {
           return (
             <li className={styles.li} key={post.id}>
               {post.title}

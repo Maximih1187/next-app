@@ -3,7 +3,6 @@
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 import Button from "../components/Button/Button";
-import { MouseEventHandler } from "react";
 
 export default function Home() {
   const [text, setText] = useState<number>();
