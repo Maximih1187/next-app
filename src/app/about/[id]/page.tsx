@@ -34,8 +34,7 @@ export default async function Post({ params: { id } }: Props) {
       </div>
       <Link className={styles.button} href="/about">
         {/* <button className={styles.button}> */}
-        Назад
-        {/* </button> */}
+        Назад f{/* </button> */}
       </Link>
     </div>
   );
