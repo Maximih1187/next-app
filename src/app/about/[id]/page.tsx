@@ -21,7 +21,7 @@ const getData = async (id: string) => {
   return response.json();
 };
 
-export default async function id(id: string) {
+export default async function Id(id: string) {
   const response = await getData(id);
 
   return (
