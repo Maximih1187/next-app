@@ -1,8 +1,6 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
-import next from "next";
-import { revalidateTag } from "next/cache";
 
 // export interface IPoste {
 //   userId: string;
@@ -35,10 +33,8 @@ export default async function About() {
         {data ? (
           data.map((post: any) => {
             return (
-              <li className={styles.li}>
-                <Link href={`/about/${post.id}`} key={post.id}>
-                  {post.title}
-                </Link>
+              <li key={post.id} className={styles.li}>
+                <Link href={`/about/${post.id}`}>{post.title}</Link>
               </li>
             );
           })
