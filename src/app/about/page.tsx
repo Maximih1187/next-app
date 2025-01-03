@@ -1,16 +1,22 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
+import next from "next";
+import { revalidateTag } from "next/cache";
 
-export interface IPoste {
-  userId: string;
-  id: string;
-  title: string;
-  body: string;
-}
+// export interface IPoste {
+//   userId: string;
+//   id: string;
+//   title: string;
+//   body: string;
+// }
 
 const getData = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    next: {
+      revalidate: 60,
+    },
+  });
   return response.json();
 };
 
@@ -21,17 +27,19 @@ export const metadata: Metadata = {
 };
 
 export default async function About() {
-  const data: IPoste[] = await getData();
+  const data = await getData();
   return (
     <div className={styles.container}>
       <div className={styles.box}>About</div>
       <ol className={styles.ul}>
         {data ? (
-          data.map((post: IPoste) => {
+          data.map((post: any) => {
             return (
-              <Link href={`/about/${post.id}`} key={post.id}>
-                <li className={styles.li}>{post.title}</li>
-              </Link>
+              <li className={styles.li}>
+                <Link href={`/about/${post.id}`} key={post.id}>
+                  {post.title}
+                </Link>
+              </li>
             );
           })
         ) : (
