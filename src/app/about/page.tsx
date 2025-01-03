@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default async function About() {
-  const data = await getData();
+  const data: IPoste[] = await getData();
   return (
     <div className={styles.container}>
       <div className={styles.box}>About</div>
