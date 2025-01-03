@@ -14,7 +14,7 @@ export async function generateMetadata({ params: { id } }: Props) {
   };
 }
 
-const getData = async ({ params: { id } }: Props) => {
+const getData = async ({ params: { id } }: Props): Promise<any> => {
   try {
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${id}`
