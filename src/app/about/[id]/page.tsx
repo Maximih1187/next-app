@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-// import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 interface Props {
@@ -8,11 +8,11 @@ interface Props {
   };
 }
 
-// export async function generateMetadata({ params: { id } }: Props) {
-//   return {
-//     title: id,
-//   };
-// }
+export async function generateMetadata(id: string): Promise<Metadata> {
+  return {
+    title: `About ${id}`,
+  };
+}
 
 const getData = async (id: string) => {
   const response = await fetch(
@@ -21,7 +21,7 @@ const getData = async (id: string) => {
   return response.json();
 };
 
-export default async function Id({ params: { id } }: Props) {
+export default async function id({ params: { id } }: Props) {
   const response = await getData(id);
 
   return (
