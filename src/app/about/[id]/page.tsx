@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import Link from "next/link";
 
 type Props = {
