@@ -1,6 +1,7 @@
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IPoste } from "../page";
 
 type Props = {
   params: {
@@ -16,7 +17,7 @@ export async function generateMetadata({
   };
 }
 
-const getData = async ({ params: { id } }: Props): Promise<any> => {
+const getData = async ({ params: { id } }: Props): Promise<IPoste> => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${id}`
   );

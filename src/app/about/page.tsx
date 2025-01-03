@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 
-interface IPoste {
+export interface IPoste {
   userId: string;
   id: string;
   title: string;
