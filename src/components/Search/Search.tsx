@@ -8,14 +8,14 @@ import {
   useState,
 } from "react";
 import styles from "./styles.module.css";
-
 import { searchPosts } from "@/service/getPost";
+import Button from "../Button/Button";
 
 interface IProp extends InputHTMLAttributes<HTMLInputElement> {
   setPosts: Dispatch<SetStateAction<never[]>>;
 }
 
-const Search: FC<IProp> = ({ setPosts }) => {
+const Search: FC<IProp> = ({ setPosts, disabled }) => {
   const [value, setValue] = useState("");
 
   const hendleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -27,6 +27,7 @@ const Search: FC<IProp> = ({ setPosts }) => {
   return (
     <form onSubmit={(e) => hendleSubmit(e)} className={styles.form}>
       <input
+        disabled={disabled}
         placeholder="введи запрос"
         className={styles.input}
         onChange={(e) => {
@@ -35,9 +36,13 @@ const Search: FC<IProp> = ({ setPosts }) => {
         type="search"
         value={value}
       />
-      <button className={styles.button} type="submit">
+      <Button
+        disabled={value.length === 0}
+        className={styles.button}
+        type="submit"
+      >
         search
-      </button>
+      </Button>
     </form>
   );
 };

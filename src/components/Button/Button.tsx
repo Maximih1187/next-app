@@ -4,9 +4,10 @@ import React, { ButtonHTMLAttributes } from "react";
 const Button: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
   onClick,
   children,
+  disabled,
 }) => {
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button disabled={disabled} className={styles.button} onClick={onClick}>
       {children}
     </button>
   );

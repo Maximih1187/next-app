@@ -15,7 +15,6 @@ const UlPosts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errors, setError] = useState<ReactNode | unknown>();
-  console.dir(posts);
 
   useEffect(() => {
     getPosts(setError)

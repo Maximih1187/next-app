@@ -16,7 +16,6 @@ const UlPosts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errors, setError] = useState<ReactNode | unknown>();
-  console.dir(posts);
 
   useEffect(() => {
     getPosts(setError)
@@ -34,7 +33,7 @@ const UlPosts = () => {
 
   return (
     <>
-      <Search setPosts={setPosts} />
+      <Search disabled={posts.length < 1} setPosts={setPosts} />
       <ul className={styles.ul}>
         {!loading ? (
           posts.map((post: IPoste) => {

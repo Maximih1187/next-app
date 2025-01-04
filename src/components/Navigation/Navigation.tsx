@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-// import styles from "./styled.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -14,13 +13,11 @@ type Props = {
 
 const Navigation = ({ navlinks }: Props) => {
   const pashname = usePathname();
-  console.log(pashname);
 
   return (
     <>
       {navlinks.map((link) => {
         const isActive = pashname === link.href;
-
         return (
           <Link
             key={link.lable}

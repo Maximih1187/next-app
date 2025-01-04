@@ -8,6 +8,7 @@ const Header = () => {
     { lable: "Home", href: "/" },
     { lable: "About", href: "/about" },
     { lable: "Tel", href: "/tel" },
+    { lable: "404", href: "/cart" },
   ];
 
   return (
