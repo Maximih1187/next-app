@@ -1,0 +1,7 @@
+.li {
+  height: 40px;
+  list-style: decimal;
+}
+.li:hover {
+  background: #e1a5a5;
+}

@@ -1,9 +1,12 @@
-export const getPosts = async () => {
+import { Dispatch, SetStateAction } from "react";
+
+export const getPosts = async (setError: Dispatch<SetStateAction<unknown>>) => {
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     if (!response.ok) throw new Error("Ошибка запроса");
     return response.json();
   } catch (error) {
+    setError(error);
     console.log(error);
   }
 };

@@ -1,10 +1,17 @@
 "use client";
-import { Dispatch, FC, FormEvent, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  FC,
+  FormEvent,
+  InputHTMLAttributes,
+  SetStateAction,
+  useState,
+} from "react";
 import styles from "./styles.module.css";
 
 import { searchPosts } from "@/service/getPost";
 
-interface IProp {
+interface IProp extends InputHTMLAttributes<HTMLInputElement> {
   setPosts: Dispatch<SetStateAction<never[]>>;
 }
 
@@ -20,13 +27,17 @@ const Search: FC<IProp> = ({ setPosts }) => {
   return (
     <form onSubmit={(e) => hendleSubmit(e)} className={styles.form}>
       <input
-        onChange={(event) => {
-          setValue(event.target.value);
+        placeholder="введи запрос"
+        className={styles.input}
+        onChange={(e) => {
+          setValue(e.target.value);
         }}
         type="search"
         value={value}
       />
-      <button type="submit">search</button>
+      <button className={styles.button} type="submit">
+        search
+      </button>
     </form>
   );
 };
