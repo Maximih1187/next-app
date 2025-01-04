@@ -1,7 +1,21 @@
 .button {
+  position: relative;
   height: 30px;
   width: 70px;
   border-radius: 7px;
   border: none;
   margin: 10px;
+  background: #ffffff;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: -9px;
+  rotate: -12deg;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-right: 13px solid #ffffff;
+  border-bottom: 7px solid transparent;
 }

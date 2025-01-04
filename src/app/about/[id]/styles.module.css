@@ -36,6 +36,7 @@
   text-align: center;
   line-height: 27px;
 }
+
 .button:hover {
   background: rgba(38, 90, 203, 0.431);
 }

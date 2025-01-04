@@ -1,15 +1,20 @@
 import React from "react";
 import styles from "./styled.module.css";
-import Link from "next/link";
+
+import Navigation from "../Navigation/Navigation";
 
 const Header = () => {
+  const navItems = [
+    { lable: "Home", href: "/" },
+    { lable: "About", href: "/about" },
+    { lable: "Tel", href: "/tel" },
+  ];
+
   return (
     <div className={styles.header}>
       <nav>
         <ul className={styles.ul}>
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/tel">Tel</Link>
+          <Navigation navlinks={navItems} />
         </ul>
       </nav>
     </div>
