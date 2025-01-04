@@ -1,0 +1,6 @@
+.li {
+  height: 40px;
+}
+.li:hover {
+  background: #e1a5a5;
+}

@@ -1,3 +1,4 @@
+import { getPost } from "@/service/getPost";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -7,24 +8,18 @@ interface Props {
     id: string;
   };
 }
-const getData = async (id: string) => {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${id}`
-  );
-  return response.json();
-};
 
 export async function generateMetadata({
   params: { id },
 }: Props): Promise<Metadata> {
-  const post = await getData(id);
+  const post = await getPost(id);
   return {
     title: `About ${post.title}`,
   };
 }
 
 export default async function Post({ params: { id } }: Props) {
-  const post = await getData(id);
+  const post = await getPost(id);
 
   return (
     <div className={styles.container}>
@@ -33,8 +28,7 @@ export default async function Post({ params: { id } }: Props) {
         <div className={styles.title}>{post.title}</div>
       </div>
       <Link className={styles.button} href="/about">
-        {/* <button className={styles.button}> */}
-        Назад f{/* </button> */}
+        Назад
       </Link>
     </div>
   );
