@@ -1,3 +1,4 @@
+import TeLLayout from "@/components/TeLLayout/TeLLayout";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function Tel() {
   return (
     <div className={styles.container}>
-      <div className={styles.box}>Tel</div>
+      <TeLLayout />
     </div>
   );
 }

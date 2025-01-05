@@ -7,18 +7,20 @@ import { getPosts } from "@/service/getPost";
 import { useEffect, useState, ReactNode } from "react";
 
 export interface IPoste {
-  userId: string;
   id: string;
   title: string;
-  body: string;
 }
 const UlPosts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [errors, setError] = useState<ReactNode | unknown>();
+  // const [errors, setError] = useState<ReactNode | unknown>();
 
   useEffect(() => {
-    getPosts(setError)
+    getPoster();
+  }, []);
+
+  const getPoster = () => {
+    getPosts({})
       .then((data) => {
         if (data) {
           setPosts(data);
@@ -26,10 +28,9 @@ const UlPosts = () => {
         } else setLoading(true);
       })
       .catch(() => {
-        setError;
         setLoading(true);
       });
-  }, []);
+  };
 
   return (
     <>
@@ -39,8 +40,6 @@ const UlPosts = () => {
           posts.map((post: IPoste) => {
             return <Poster key={post.id} id={post.id} title={post.title} />;
           })
-        ) : errors ? (
-          <div>{`${errors}`}</div>
         ) : (
           <div>loading...</div>
         )}

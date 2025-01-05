@@ -1,36 +1,24 @@
-import { Dispatch, SetStateAction } from "react";
+const baseApi = "https://jsonplaceholder.typicode.com/posts";
 
-export const getPosts = async (setError: Dispatch<SetStateAction<unknown>>) => {
-  try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    if (!response.ok) throw new Error("Ошибка запроса");
-    return response.json();
-  } catch (error) {
-    setError(error);
-    console.log(error);
-  }
-};
+interface IUrl {
+	id?: string;
+	value?: string;
+}
 
-export const getPost = async (id: string | undefined = undefined) => {
-  try {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts/${id}`
-    );
-    if (!response.ok) throw new Error("Ошибка запроса");
-    return response.json();
-  } catch (error) {
-    console.log(error);
-  }
-};
+export const getPosts = async ({ id, value }: IUrl) => {
+	let url = `${baseApi}`;
 
-export const searchPosts = async (search: string) => {
-  try {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts?q=${search}`
-    );
-    if (!response.ok) throw new Error("Ошибка запроса!");
-    return response.json();
-  } catch (error) {
-    console.log(error);
-  }
+	if (value) {
+		url = `${baseApi}?q=${value}`;
+	} else if (id) {
+		url = `${baseApi}/${id}`;
+	}
+
+	try {
+		const response = await fetch(`${url}`);
+		if (!response.ok) throw new Error("Ошибка запроса Max");
+		return response.json();
+	} catch (error) {
+		console.log(error);
+	}
 };

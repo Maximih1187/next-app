@@ -3,17 +3,4 @@
   height: 100vh;
   background: #5e5e5e47;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-.box {
-  font-size: 25px;
-  height: 100vh;
-  padding: 20px;
-}
-.text {
-  width: 200px;
-  margin: 20px;
-  color: rgb(7, 66, 218);
 }

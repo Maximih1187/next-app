@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import {
   Dispatch,
   FC,
@@ -8,8 +8,9 @@ import {
   useState,
 } from "react";
 import styles from "./styles.module.css";
-import { searchPosts } from "@/service/getPost";
+// import { searchPosts } from "@/service/getPost";
 import Button from "../Button/Button";
+import { getPosts } from "@/service/getPost";
 
 interface IProp extends InputHTMLAttributes<HTMLInputElement> {
   setPosts: Dispatch<SetStateAction<never[]>>;
@@ -20,7 +21,12 @@ const Search: FC<IProp> = ({ setPosts, disabled }) => {
 
   const hendleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    searchPosts(value).then((data) => setPosts(data));
+    getPosts({ value }).then((data) => {
+      console.log(value);
+      if (data.length) {
+        setPosts(data);
+      }
+    });
     setValue("");
   };
 

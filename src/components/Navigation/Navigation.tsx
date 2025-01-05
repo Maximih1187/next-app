@@ -17,7 +17,10 @@ const Navigation = ({ navlinks }: Props) => {
   return (
     <>
       {navlinks.map((link) => {
-        const isActive = pashname === link.href;
+        let isActive =
+          pashname === link.href ||
+          pashname === `${"/about"}${pashname.slice(link.href.length)}`;
+
         return (
           <Link
             key={link.lable}

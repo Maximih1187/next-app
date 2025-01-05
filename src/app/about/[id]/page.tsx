@@ -1,4 +1,4 @@
-import { getPost } from "@/service/getPost";
+import { getPosts } from "@/service/getPost";
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -10,16 +10,16 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
-  const post = await getPost(id);
+  const { id } = params;
+  const post = await getPosts({id});
   return {
     title: `About ${post.title}`,
   };
 }
 
 export default async function Post({ params }: Props) {
-  const { id } = await params;
-  const post = await getPost(id);
+  const { id } = params;
+  const post = await getPosts({id});
 
   return (
     <div className={styles.container}>

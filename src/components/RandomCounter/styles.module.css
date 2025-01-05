@@ -1,0 +1,14 @@
+.box {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.text {
+  width: 200px;
+  height: 30px;
+  margin: 20px;
+  color: rgb(7, 66, 218);
+}
