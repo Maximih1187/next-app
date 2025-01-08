@@ -6,35 +6,48 @@ import Search from "../Search/Search";
 import { getPosts } from "@/service/getPost";
 import { useEffect, useState, ReactNode } from "react";
 
-export interface IPoste {
+interface IPoste {
   id: string;
   title: string;
 }
-const UlPosts = () => {
-  const [posts, setPosts] = useState([]);
+interface IResPosts {
+  resPosts: IPoste[]
+}
+
+const UlPosts = ({ resPosts }: IResPosts) => {
+  const [posts, setPosts] = useState<IPoste[]>([]);
   const [loading, setLoading] = useState(true);
-  // const [errors, setError] = useState<ReactNode | unknown>();
+  const [filterStr, setFilterStr] = useState('');
+
+
+
 
   useEffect(() => {
-    getPoster();
+    if (resPosts)
+
+      setPosts(resPosts);
+    setLoading(false)
   }, []);
 
-  const getPoster = () => {
-    getPosts({})
-      .then((data) => {
-        if (data) {
-          setPosts(data);
-          setLoading(false);
-        } else setLoading(true);
-      })
-      .catch(() => {
-        setLoading(true);
-      });
-  };
+
+  // const filterPosts = () => {
+  //   let filtr =
+  //     resPosts.filter((item) => {
+  //       return item.title.includes(filterStr)
+  //     })
+  //   // setFilter(filtr)
+
+
+  // }
+  // filterPosts()
+  // console.log(filtr);
+
 
   return (
     <>
-      <Search disabled={posts.length < 1} setPosts={setPosts} />
+      <Search disabled={posts.length < 1} setFilterStr={setFilterStr}
+      // setPosts={setPosts}
+      />
       <ul className={styles.ul}>
         {!loading ? (
           posts.map((post: IPoste) => {

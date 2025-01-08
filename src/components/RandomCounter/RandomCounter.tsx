@@ -8,12 +8,16 @@ const RandomCounter = () => {
   const nameButton = () => {
     setText((Math.random() * 100).toFixed(1));
   };
+
+
+
   return (
     <div>
       <div className={styles.box}>
         <div>
           <Button onClick={nameButton}>Привет</Button>
           <Button onClick={nameButton}> Как дела?</Button>
+
         </div>
         <div className={styles.text}>{text}</div>
       </div>

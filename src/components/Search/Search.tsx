@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import {
   Dispatch,
   FC,
@@ -11,20 +11,23 @@ import styles from "./styles.module.css";
 // import { searchPosts } from "@/service/getPost";
 import Button from "../Button/Button";
 import { getPosts } from "@/service/getPost";
+import { IPoste } from "../OlPosts/UlPosts";
 
 interface IProp extends InputHTMLAttributes<HTMLInputElement> {
-  setPosts: Dispatch<SetStateAction<never[]>>;
+  // setPosts: Dispatch<SetStateAction<any[]>>;
+  setFilterStr: Dispatch<SetStateAction<string>>
 }
 
-const Search: FC<IProp> = ({ setPosts, disabled }) => {
+const Search: FC<IProp> = ({ disabled, setFilterStr }) => {
   const [value, setValue] = useState("");
 
   const hendleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFilterStr(value);
     getPosts({ value }).then((data) => {
       console.log(value);
       if (data.length) {
-        setPosts(data);
+        // setPosts(data);
       }
     });
     setValue("");

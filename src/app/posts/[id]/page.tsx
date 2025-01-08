@@ -10,16 +10,17 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = params;
-  const post = await getPosts({id});
+  const { id } = await params;
+  const post = await getPosts({ id });
   return {
     title: `About ${post.title}`,
   };
 }
 
 export default async function Post({ params }: Props) {
-  const { id } = params;
-  const post = await getPosts({id});
+  const { id } = await params;
+  const post = await getPosts({ id });
+
 
   return (
     <div className={styles.container}>
@@ -27,9 +28,14 @@ export default async function Post({ params }: Props) {
         <div className={styles.id}>{post.id}</div>
         <div className={styles.title}>{post.title}</div>
       </div>
-      <Link className={styles.button} href="/about">
-        Назад
-      </Link>
+      <div className={styles.wrapperbutton}>
+        <Link className={styles.button} href="/posts">
+          Назад
+        </Link>
+        <Link className={styles.button} href={`${id}/albums`}>
+          Albums
+        </Link >
+      </div>
     </div>
   );
 }

@@ -5,10 +5,14 @@
   border-radius: 7px;
   border: none;
   margin: 5px;
-  background: #ffffff;
+  background: rgba(4, 0, 255, 0.841);
   transition: all 0.25s;
+  color: aliceblue;
 }
 
 .button:hover {
   box-shadow: 1px 7px 15px -3px rgba(34, 60, 80, 0.2);
+}
+.button:disabled {
+  background: #7b7a7a5a;
 }

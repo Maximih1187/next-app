@@ -9,7 +9,7 @@ type Props = {
 const Poster = ({ id, title }: Props) => {
   return (
     <li className={styles.li}>
-      <Link href={`/about/${id}`}>{title}</Link>
+      <Link className={styles.link} href={`/posts/${id}`}>{title}</Link>
     </li>
   );
 };

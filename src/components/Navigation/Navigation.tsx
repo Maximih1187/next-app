@@ -11,15 +11,17 @@ type Props = {
   navlinks: NavItem[];
 };
 
-const Navigation = ({ navlinks }: Props) => {
+const Navigation = (
+  { navlinks }: Props
+) => {
   const pashname = usePathname();
 
   return (
     <>
-      {navlinks.map((link) => {
+      {navlinks ? navlinks.map((link) => {
         let isActive =
           pashname === link.href ||
-          pashname === `${"/about"}${pashname.slice(link.href.length)}`;
+          pashname === `${"/posts"}${pashname.slice(link.href.length)}`;
 
         return (
           <Link
@@ -30,7 +32,7 @@ const Navigation = ({ navlinks }: Props) => {
             {link.lable}
           </Link>
         );
-      })}
+      }) : null}
     </>
   );
 };
