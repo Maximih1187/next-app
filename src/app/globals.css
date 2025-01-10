@@ -50,4 +50,5 @@ a {
 .active {
   color: blue;
   transition: all 0.06s;
+  cursor: default;
 }

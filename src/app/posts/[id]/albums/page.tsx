@@ -1,21 +1,20 @@
-import { getPosts } from "@/service/getPost";
+'use server'
+
 import styles from "./styles.module.css";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 
-// interface Props {
-//   params: {
-//     id: string;
-//   };
-// }
 
-export const metadata: Metadata = {
-  title: 'Albums'
-
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Albums',
+  };
 }
 
+
 export async function getListFromAlbums() {
+
   try {
     const itemsFromAlbums = await fetch('https://jsonplaceholder.typicode.com/albums')
     if (!itemsFromAlbums) throw new Error("Альбому пиздос");
@@ -25,18 +24,15 @@ export async function getListFromAlbums() {
   }
 }
 
-type itemAlbum = {
+interface itemAlbum {
   id: string;
   title: string
 }
 
-interface IlistAlbums {
-  listFromAlbums: itemAlbum[]
-}
 
 export default async function Albums() {
-  const listFromAlbums = await getListFromAlbums()
-  console.log(listFromAlbums);
+  const listFromAlbums: itemAlbum[] = await getListFromAlbums()
+
 
   return (
     <div className={styles.container} >
@@ -47,7 +43,6 @@ export default async function Albums() {
             <li className={styles.li} key={item.id}>
               <Link href={`albums/${item.id}`} >{item.title}</Link>
             </li>)
-
         }) : <h2>
           loading...
         </h2>}

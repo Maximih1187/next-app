@@ -1,57 +1,60 @@
-"use client";
+
 import {
+  ChangeEvent,
+  ChangeEventHandler,
   Dispatch,
   FC,
-  FormEvent,
+  // FormEvent,
   InputHTMLAttributes,
   SetStateAction,
-  useState,
+  // useState,
 } from "react";
 import styles from "./styles.module.css";
-// import { searchPosts } from "@/service/getPost";
-import Button from "../Button/Button";
-import { getPosts } from "@/service/getPost";
-import { IPoste } from "../OlPosts/UlPosts";
+// import Button from "../Button/Button";
+// import { getPosts } from "@/service/getPost";
+
 
 interface IProp extends InputHTMLAttributes<HTMLInputElement> {
-  // setPosts: Dispatch<SetStateAction<any[]>>;
+
   setFilterStr: Dispatch<SetStateAction<string>>
 }
 
 const Search: FC<IProp> = ({ disabled, setFilterStr }) => {
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
 
-  const hendleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const hendleSubmit: ChangeEventHandler<HTMLInputElement> = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setFilterStr(value);
-    getPosts({ value }).then((data) => {
-      console.log(value);
-      if (data.length) {
-        // setPosts(data);
-      }
-    });
-    setValue("");
+    setFilterStr(e.target.value);
+    // const search = e.target.search.value;
+    // setValue()
   };
 
   return (
-    <form onSubmit={(e) => hendleSubmit(e)} className={styles.form}>
+    <form
+      autoComplete="off"
+      autoCapitalize="off"
+      // onSubmit={hendleSubmit}
+      className={styles.form}>
       <input
+        // onSubmit={hendleSubmit}
+        name="search"
         disabled={disabled}
         placeholder="введи запрос"
         className={styles.input}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
         type="search"
-        value={value}
+        onChange={(e) => hendleSubmit(e)}
+
       />
-      <Button
-        disabled={value.length === 0}
+      {/* <input
+        value={'search'}
         className={styles.button}
+
+
         type="submit"
-      >
-        search
-      </Button>
+
+      /> */}
+
+
     </form>
   );
 };

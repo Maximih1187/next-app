@@ -5,15 +5,24 @@
   background: #5e5e5e47;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
 }
-.id {
+.h1,
+.title {
+  margin-top: 20px;
+  cursor: default;
+}
+.id,
+.title {
   cursor: default;
   font-size: 30px;
 }
 .title {
-  cursor: default;
-  font-size: 30px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 400;
+  color: blue;
 }
 .wrapper {
   margin: 20px;
@@ -23,10 +32,8 @@
 }
 .button {
   background: rgba(23, 19, 237, 0.96);
-  position: absolute;
+  margin-top: 40px;
   font-size: 17px;
-  top: 100px;
-  left: 48%;
   width: 90px;
   height: 30px;
   border-radius: 5px;
@@ -36,7 +43,6 @@
   text-align: center;
   line-height: 27px;
 }
-
 .button:hover {
   background: rgba(38, 90, 203, 0.431);
 }

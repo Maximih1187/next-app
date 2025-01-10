@@ -9,11 +9,13 @@ interface Props {
   };
 }
 
+
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const post = await getPosts({ id });
+
   return {
-    title: `About ${post.title}`,
+    title: `Post_${id}`,
   };
 }
 

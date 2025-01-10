@@ -3,7 +3,6 @@
 import styles from "./styles.module.css";
 import Poster from "../Poster/Poster";
 import Search from "../Search/Search";
-import { getPosts } from "@/service/getPost";
 import { useEffect, useState, ReactNode } from "react";
 
 interface IPoste {
@@ -24,7 +23,6 @@ const UlPosts = ({ resPosts }: IResPosts) => {
 
   useEffect(() => {
     if (resPosts)
-
       setPosts(resPosts);
     setLoading(false)
   }, []);
@@ -46,11 +44,11 @@ const UlPosts = ({ resPosts }: IResPosts) => {
   return (
     <>
       <Search disabled={posts.length < 1} setFilterStr={setFilterStr}
-      // setPosts={setPosts}
+
       />
       <ul className={styles.ul}>
-        {!loading ? (
-          posts.map((post: IPoste) => {
+        {!loading ? (posts.filter((item) => { return item.title.includes(filterStr) })
+          .map((post: IPoste) => {
             return <Poster key={post.id} id={post.id} title={post.title} />;
           })
         ) : (
