@@ -3,7 +3,8 @@
 import styles from "./styles.module.css";
 import Poster from "../Poster/Poster";
 import Search from "../Search/Search";
-import { useEffect, useState, ReactNode } from "react";
+import { useEffect, useState } from "react";
+
 
 interface IPoste {
   id: string;
@@ -17,6 +18,7 @@ const UlPosts = ({ resPosts }: IResPosts) => {
   const [posts, setPosts] = useState<IPoste[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterStr, setFilterStr] = useState('');
+
 
 
 

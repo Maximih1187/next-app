@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+
 type NavItem = {
   lable: string;
   href: string;
@@ -16,12 +17,15 @@ const Navigation = (
 ) => {
   const pashname = usePathname();
 
+  console.log(pashname);
+
   return (
     <>
       {navlinks ? navlinks.map((link) => {
         let isActive =
           pashname === link.href ||
           pashname === `${"/posts"}${pashname.slice(link.href.length)}`;
+
 
         return (
           <Link
