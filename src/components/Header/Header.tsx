@@ -7,7 +7,7 @@ import Navigation from "../Navigation/Navigation";
 
 
 async function headerNavItem() {
-   const response = await fetch('http://localhost:3001/api/headers');
+   const response = await fetch('http://localhost:3000/api/headers');
    return await response.json()
 
 }
